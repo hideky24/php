@@ -29,7 +29,31 @@
     function getALL(){
       $sql = "SELECT = FROM pacientes";
       return mysqli_query($this->conexion, $sql);
-  }}
+  }
+  function getOne($id)
+{
+$sql = "SELECT * FROM Pacientes WHERE id = $id";
+return mysqli_query($this->conexion, $sql);   
+}  
+function update($params){
+  $nombres = $params['nombres'];
+        $apellidos = $params['apellidos'];
+        $email = $params['email'];
+        $celular = $params['celular'];
+        $enfermedades = $params['enfermedades'];
+        $duracionSesion = $params['duracionSesion'];
+        $fecha = $params['fecha'];
+        $imagen = $params['imagen'];
+        $id =$params['id'];
+
+        $update= "UPDATE pacientes SET nombres='$nombres', apellidos='$apellidos', email='$email',celular=$celular,
+        enfermedades='$enfermedades',duracionSesion='$duracionSesion', fecha='$fecha', imagen='$imagen' WHERE id=$id";
+       return mysqli_query($this->conexion, $update);
+      }
+       
+}
+
+
     
     
 
