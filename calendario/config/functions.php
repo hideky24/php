@@ -1,7 +1,7 @@
 <?php 
 
 function getFolderProject() {
-    print_r (__DIR__);
+   
     if (strpos(__DIR__, '/') !== false) {
         $folder = str_replace('/opt/lampp/htdocs/', '/', __DIR__);
     } else{
@@ -11,10 +11,14 @@ function getFolderProject() {
     return $folder;
 }
 
-function saveImage($file){
-    $imageName= str_replace(' ','',$file['imagen']['name']);    
-    $imgTmp = $file['imagen']['tmp_name'];
-    move_uploaded_file($imgTmp, $_SERVER['DOCUMENT_ROOT'].getFolderProject(). '/images' . $imageName);
-    return $imageName;
-}
+function saveImage($files){
+    /* LE QUITAMOS LOS ESPACIOS Y ACORTAMOS EL NOMBRE A LA IMG */
+    $file_name = str_replace(' ', '', $files['imagen']['name']);
+      $file_tmp = $files['imagen']['tmp_name'];
+     /* GUARDAMOS LA IMG TEMPORALMENTE */
+    
+    move_uploaded_file($file_tmp, $_SERVER['DOCUMENT_ROOT'] . getFolderProject() . '/images/' . $file_name); /* INDICAMOS LA RUTA DONDE SE VA ALMACENAR ESA IMAGEN */
+    
+    return $file_name; /* ACTIVA LA FUNCION */
+    }
 ?>
