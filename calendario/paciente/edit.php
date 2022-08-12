@@ -2,13 +2,13 @@
 include('../config/config.php');
 include('paciente.php');
 $p = new paciente();
-$data = mysqli_fetch_object($p->getOne($__GET['id']));  
-$date = new Datetime($data->fecha);
+$dp = mysqli_fetch_object($p->getOne($_GET['id']));  
+$date = new DateTime($dp->fecha);
 
 if (isset($_POST) && !empty($_POST)){
-    $_POST['image'] = $data->image;
-    if ($_FILES['image']['name']!--''){
-        $_POST['image'] = saveImage($_FILES);
+     $_POST['imagen'] = $dp->imagen;
+    if ($_FILES['imagen']['name'] !== ''){
+      $_POST['imagen'] = saveImage($_FILES);
     }
     $update = $p->update($_POST);
     if ($update){
@@ -29,6 +29,7 @@ if (isset($_POST) && !empty($_POST)){
 </head>
 
 <body>
+    
     <?php include('../menu.php') ?>
     <div class="container">
         <?php 
@@ -65,17 +66,32 @@ if (isset($_POST) && !empty($_POST)){
           </div>
               <div class="row mb-2">
         <div class="col">
-        <input type="datetime-local" name="duracionSesion" id="duracionSesion" require class="form-control" value="<?= $data->format('Y-m-d\TH:i')?>" />
+        <input type="text" name="duracionSesion" id="duracionSesion" place holder="Duracion de la sesión" require class="form-control" value="<?= $dp->duracionSesion ?>" />
         </div>
-        <div class="col">
-            <input type="text" name="fecha" id="fecha" place holder="Fecha" require class="form-control" value="<?= $dp->fecha?>" />
         </div>
     </div>   
-    <button class="btn btn-success"> Registrar </button>
+    <div class="row mb-2">
+        <div class="col">
+        <input type="datetime-local" name="fecha" id="fecha" require class="form-control" value="<?= $date->format('Y-m-d') ?>" />
+        </div>
+        
+    </div>   
 
+    <div class="row mb-2">
+        <div class="col">
+        <input type="file" name="imagen" id="imagen" class="form-control" />
+        </div>
+        </div>
+    
+    <button class="btn btn-success"> Registrar </button>
         </form>
 
     </div>
+
+
+ 
+
+
 </body>
 
 

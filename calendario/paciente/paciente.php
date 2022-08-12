@@ -23,11 +23,11 @@
         
 
         $insert = "INSERT INTO pacientes VALUES (NULL, '$nombres', '$apellidos', '$email', '$celular',
-         '$enfermedades','$duracionSesion', '$fecha', '$imagen') ";
+         '$enfermedades','$duracionSesion', '$imagen','$fecha') ";
         return mysqli_query($this->conexion, $insert);
     }
     function getALL(){
-      $sql = "SELECT = FROM pacientes";
+      $sql = "SELECT * FROM pacientes ORDER BY fecha ASC";
       return mysqli_query($this->conexion, $sql);
   }
   function getOne($id)
@@ -51,16 +51,14 @@ function update($params){
        return mysqli_query($this->conexion, $update);
       }
        
-}
 
 
-    
-    
 
-    //function remove($id){
-      //$remove = "DELETE FROM pacientes WHERE id = $id"; 
-      //return mysqli_query ($this->conexion, $remove);
-    //}
-   
+  
+  function remove($id){
+      $remove = "DELETE FROM pacientes WHERE id = $id"; 
+      return mysqli_query($this->conexion, $remove);
+    }
+  }
 
 ?>
