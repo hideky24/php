@@ -12,11 +12,11 @@ include('config/config.php');
     <title>Document</title>
 </head>
 <body>
-
+<?php include ('menu.php')?>
 <div class="container">
     <h1 class="text-center">Calendario</h1>
 </div>
-<nav class="navbar navbar-expand navbar-dark bg-dark mb-5" >
+<!--  <nav class="navbar navbar-expand navbar-dark bg-dark mb-5" >
 <ul class='navbar-nav'>
 <li class="nav-item">
 <a class="nav-link" href="paciente/index.php">Ver Calendario</a>
@@ -25,8 +25,7 @@ include('config/config.php');
 <a class="nav-link" href="paciente/add.php">Registrar sesion</a>
 </li>  
 </ul>
-</nav>
-<!--  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
-    -->
-</body>
+</nav>-->
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+ </body>
 </html>
